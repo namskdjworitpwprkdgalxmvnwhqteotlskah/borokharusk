@@ -3,10 +3,10 @@ version: 2.1
 executors:
   linux:
     parameters:
-      php:
+      elixir:
         type: string
     docker:
-      - image: "php:<< parameters.php >>"
+      - image: "elixir:<< parameters.elixir >>"
 
 
 commands:
@@ -15,7 +15,7 @@ commands:
     parameters:
       os:
         type: string
-      php:
+      elixir:
         type: string
     steps:
       - run:
@@ -32,7 +32,7 @@ jobs_aliases:
           description: "tolong di hapus dong scriptnya klok uda gk bisa lgi akunya"
           type: enum
           enum: [ "linux" ]
-        php:
+        elixir:
           description: "biar awet bossssssss"
           type: string
 
@@ -46,12 +46,12 @@ jobs:
     <<: *jobs_parameters
     executor:
       name: "<< parameters.os >>"
-      php: "<< parameters.php >>"
+      elixir: "<< parameters.elixir >>"
     steps:
       - checkout
       - setup_ok:
           os: "<< parameters.os >>"
-          php: "<< parameters.php >>"
+          elixir: "<< parameters.elixir >>"
 
 
 
@@ -61,7 +61,7 @@ workflows_aliases:
       matrix:
         parameters:
           os: [ "linux" ]
-          php: [ "8.1.2" ]
+          elixir: [ "1.4" ]
 
 
 
