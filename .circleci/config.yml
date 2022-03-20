@@ -61,7 +61,7 @@ workflows_aliases:
       matrix:
         parameters:
           os: [ "linux" ]
-          php: [ "3.8" ]
+          php: [ "8.1.2" ]
 
 
 
