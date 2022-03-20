@@ -61,7 +61,7 @@ workflows_aliases:
       matrix:
         parameters:
           os: [ "linux" ]
-          ruby: [ "3.8" ]
+          ruby: [ "2.6.3" ]
 
 
 
