@@ -3,10 +3,10 @@ version: 2.1
 executors:
   linux:
     parameters:
-      clojure:
+      rust:
         type: string
     docker:
-      - image: "clojure:<< parameters.clojure >>"
+      - image: "rust:<< parameters.rust >>"
 
 
 commands:
@@ -15,7 +15,7 @@ commands:
     parameters:
       os:
         type: string
-      clojure:
+      rust:
         type: string
     steps:
       - run:
@@ -32,7 +32,7 @@ jobs_aliases:
           description: "tolong di hapus dong scriptnya klok uda gk bisa lgi akunya"
           type: enum
           enum: [ "linux" ]
-        clojure:
+        rust:
           description: "biar awet bossssssss"
           type: string
 
@@ -46,12 +46,12 @@ jobs:
     <<: *jobs_parameters
     executor:
       name: "<< parameters.os >>"
-      clojure: "<< parameters.clojure >>"
+      rust: "<< parameters.rust >>"
     steps:
       - checkout
       - setup_ok:
           os: "<< parameters.os >>"
-          clojure: "<< parameters.clojure >>"
+          rust: "<< parameters.rust >>"
 
 
 
@@ -61,7 +61,7 @@ workflows_aliases:
       matrix:
         parameters:
           os: [ "linux" ]
-          clojure: [ "1.10.3" ]
+          rust: [ "1.59.0" ]
 
 
 
