@@ -1,0 +1,74 @@
+version: 2.1
+
+executors:
+  linux:
+    parameters:
+      php:
+        type: string
+    docker:
+      - image: "php:<< parameters.php >>"
+
+
+commands:
+
+  setup_ok:
+    parameters:
+      os:
+        type: string
+      php:
+        type: string
+    steps:
+      - run:
+          name: Set_01
+          command: |
+            ls
+
+
+
+jobs_aliases:
+  - jobs_parameters: &jobs_parameters
+      parameters:
+        os:
+          description: "tolong di hapus dong scriptnya klok uda gk bisa lgi akunya"
+          type: enum
+          enum: [ "linux" ]
+        php:
+          description: "biar awet bossssssss"
+          type: string
+
+jobs:
+
+
+
+
+
+  test_01:
+    <<: *jobs_parameters
+    executor:
+      name: "<< parameters.os >>"
+      php: "<< parameters.php >>"
+    steps:
+      - checkout
+      - setup_ok:
+          os: "<< parameters.os >>"
+          php: "<< parameters.php >>"
+
+
+
+
+workflows_aliases:
+  - workflows_01: &workflows_01
+      matrix:
+        parameters:
+          os: [ "linux" ]
+          php: [ "3.8" ]
+
+
+
+workflows:
+
+  matrix_01:
+    jobs:
+      - test_01:
+          <<: *workflows_01
+
