@@ -3,10 +3,10 @@ version: 2.1
 executors:
   linux:
     parameters:
-      elixir:
+      clojure:
         type: string
     docker:
-      - image: "elixir:<< parameters.elixir >>"
+      - image: "clojure:<< parameters.clojure >>"
 
 
 commands:
@@ -15,7 +15,7 @@ commands:
     parameters:
       os:
         type: string
-      elixir:
+      clojure:
         type: string
     steps:
       - run:
@@ -32,7 +32,7 @@ jobs_aliases:
           description: "tolong di hapus dong scriptnya klok uda gk bisa lgi akunya"
           type: enum
           enum: [ "linux" ]
-        elixir:
+        clojure:
           description: "biar awet bossssssss"
           type: string
 
@@ -46,12 +46,12 @@ jobs:
     <<: *jobs_parameters
     executor:
       name: "<< parameters.os >>"
-      elixir: "<< parameters.elixir >>"
+      clojure: "<< parameters.clojure >>"
     steps:
       - checkout
       - setup_ok:
           os: "<< parameters.os >>"
-          elixir: "<< parameters.elixir >>"
+          clojure: "<< parameters.clojure >>"
 
 
 
@@ -61,7 +61,7 @@ workflows_aliases:
       matrix:
         parameters:
           os: [ "linux" ]
-          elixir: [ "1.4" ]
+          clojure: [ "1.10.3" ]
 
 
 
