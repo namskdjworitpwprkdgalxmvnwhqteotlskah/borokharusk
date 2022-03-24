@@ -3,7 +3,7 @@ version: 2.1
 executors:
   linux:
     machine:
-      image: python:3.8
+      image: true
 
 jobs:
   AA:
