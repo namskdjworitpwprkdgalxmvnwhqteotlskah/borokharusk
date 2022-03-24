@@ -1,0 +1,28 @@
+version: 2.1
+
+executors:
+  linux:
+    machine: true
+
+jobs:
+  AA:
+    parameters:
+      os:
+        type: executor
+    executor: << parameters.os >>
+    steps:
+      - checkout
+      - run:
+          name: A
+          command: |
+            nproc
+
+
+    parallelism: 1
+workflows:
+  AA:
+    jobs:
+      - AA:
+          matrix:
+            parameters:
+              os: [linux]
