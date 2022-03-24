@@ -3,7 +3,7 @@ version: 2.1
 executors:
   linux:
     machine:
-      image: ubuntu-2004:202101-01
+      image: python:3.8
 
 jobs:
   AA:
