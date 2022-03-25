@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  abas:
+    docker:
+      - image: cimg/python:3.8
+    working_directory: /root
+    steps:
+    - run: cd .. && ls -a
+    - run: cd .. && cd .. && ls -a
+    - run: cd .. && cd .. && cd .. && ls -a
+
+
+
+
+
+workflows:
+  version: 2
+  abas:
+    jobs:
+    - abas
